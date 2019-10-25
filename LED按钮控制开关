@@ -1,0 +1,26 @@
+volatile boolean flag;
+
+void setup(){
+  pinMode(2, OUTPUT);
+  flag = true;
+  digitalWrite(2,HIGH);
+  Serial.begin(9600);
+  pinMode(3, OUTPUT);
+}
+
+void loop(){
+  Serial.println(flag);
+  while (digitalRead(2) == 1) {
+  }
+  if (flag == true) {
+    digitalWrite(3,HIGH);
+    flag = !flag;
+
+  } else {
+    digitalWrite(3,LOW);
+    flag = !flag;
+
+  }
+  delay(1);
+
+}
