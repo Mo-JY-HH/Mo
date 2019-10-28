@@ -1,0 +1,18 @@
+volatile int brightness;
+
+void setup(){
+  pinMode(2, OUTPUT);
+  brightness = 0;
+  digitalWrite(2,HIGH);
+  Serial.begin(9600);
+}
+
+void loop(){
+  while (digitalRead(2)) {
+  }
+  brightness = (long) ((brightness + 1)) % (long) (6);
+  analogWrite(3,(brightness * 51));
+  Serial.println((brightness * 51));
+  delay(1000);
+
+}
