@@ -1,0 +1,23 @@
+#include <LiquidCrystal_SoftI2C.h>
+#include <SoftI2CMaster.h>
+
+LiquidCrystal_SoftI2C mylcd(0x27,16,2,2,3);
+
+void setup(){
+  mylcd.init();
+  mylcd.backlight();
+  Serial.begin(9600);
+}
+
+void loop(){
+  mylcd.display();
+  mylcd.setCursor(0, 0);
+  mylcd.print((map(analogRead(A0), 0, 1023, 0, 255)));
+  mylcd.setCursor(0, 1);
+  mylcd.print("helloworld");
+
+  Serial.println((map(analogRead(A0), 0, 1023, 0, 255)));
+
+  analogWrite(9,(map(analogRead(A0), 0, 1023, 0, 255)));
+
+}
