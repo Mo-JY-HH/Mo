@@ -1,0 +1,32 @@
+volatile int item;
+volatile boolean turn;
+
+void setup(){
+  pinMode(10, OUTPUT);
+  pinMode(7, OUTPUT);
+  turn = false;
+  digitalWrite(10,HIGH);
+  digitalWrite(7,HIGH);
+  item = 0;
+  Serial.begin(9600);
+}
+
+void loop(){
+  while (digitalRead(10)) {
+  }
+  turn = !turn;
+  Serial.println(turn);
+  if (turn == true) {
+    delay(1000);
+    Serial.println(1);
+    digitalWrite(7,LOW);
+
+  }
+  if (turn == false) {
+    delay(1000);
+    Serial.println(0);
+    digitalWrite(7,HIGH);
+
+  }
+
+}
